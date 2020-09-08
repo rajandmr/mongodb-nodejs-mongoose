@@ -10,6 +10,7 @@ This will install all the required dependencies. Now, create a file .env at the 
 2 variables.
 
 DB = "Your connection String here"
+
 PORT = "Your desired port, default is 8080"
 
 Now run
