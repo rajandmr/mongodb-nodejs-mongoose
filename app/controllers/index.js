@@ -1,4 +1,4 @@
-const NotesModel = require("../models/NotesModel");
+const NotesModel = require('../models/NotesModel');
 
 exports.findAll = async (req, res) => {
   try {
@@ -6,7 +6,7 @@ exports.findAll = async (req, res) => {
     res.send(notes);
   } catch (error) {
     res.status(500).send({
-      message: error.message || "Some error occured while retrieving Notes",
+      message: error.message || 'Some error occured while retrieving Notes',
     });
   }
 };
@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
   const Note = req.body;
 
   try {
-    let NoteDoc = new NotesModel(Note);
+    const NoteDoc = new NotesModel(Note);
     await NoteDoc.save();
     res.send(Note);
   } catch (error) {
@@ -27,7 +27,7 @@ exports.findOne = async (req, res) => {
   const id = req.params.id;
 
   try {
-    let Note = await NotesModel.findById(id);
+    const Note = await NotesModel.findById(id);
     res.send(Note);
   } catch (error) {
     res.status(500).send(error);
@@ -35,7 +35,7 @@ exports.findOne = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  let { ...data } = req.body;
+  const { ...data } = req.body;
   const result = await NotesModel.findOneAndUpdate(
     { _id: req.params.id },
     data,
@@ -49,7 +49,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   try {
-    let id = req.params.id;
+    const { id } = req.params;
 
     await NotesModel.findByIdAndDelete(req.params.id);
 
