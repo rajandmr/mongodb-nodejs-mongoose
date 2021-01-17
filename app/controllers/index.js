@@ -49,8 +49,6 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
   try {
-    const { id } = req.params;
-
     await NotesModel.findByIdAndDelete(req.params.id);
 
     res.status(200).send();
